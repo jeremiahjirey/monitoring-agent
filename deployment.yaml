@@ -19,11 +19,22 @@ spec:
         - containerPort: 8080
         env:
         - name: ENVIRONMENT
-          value: "production"
+          valueFrom:
+          secretKeyRef:
+                  name: pod-secret
+                  key: ENVIRONMENT
+
         - name: CRASH
-          value: "true"
+          valueFrom:
+          secretKeyRef:
+                  name: pod-secret
+                  key: CRASH
+
         - name: CRASH_AFTER_TIME_MS
-          value: "5000"
+          valueFrom:
+          secretKeyRef:
+                  name: pod-secret
+                  key: CRASH_AFTER_TIME_MS
 
 ---
 apiVersion: v1
@@ -31,7 +42,7 @@ kind: Service
 metadata:
   name: loadsim-service
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"  # Penting!
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb" 
 spec:
   selector:
     app: loadsim
