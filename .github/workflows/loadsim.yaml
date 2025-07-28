@@ -104,8 +104,8 @@ jobs:
 
        - name: Delete Old Deployment
          run:  |
-          kubectl delete deployment flask
-          kubectl delete svc flask-app-service 
+          kubectl delete deployment loadsim
+          kubectl delete svc techno-app-service
           
        - name: Deploy to EKS
          env:
