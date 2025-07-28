@@ -105,7 +105,7 @@ jobs:
        - name: Delete Old Deployment
          run:  |
           kubectl delete deployment loadsim
-          kubectl delete svc loadsim-service
+         # kubectl delete svc loadsim-service
           
        - name: Deploy to EKS
          env:
