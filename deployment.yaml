@@ -17,13 +17,25 @@ spec:
         image: 122315765326.dkr.ecr.us-east-1.amazonaws.com/loadsim:loadsim
         ports:
         - containerPort: 8080
-        env:
+      env:
         - name: ENVIRONMENT
-          valueFrom:
-            secretKeyRef:
-                name: pod-secret
-                key: ENVIRONMENT
-
+          value: "production"
+        - name: CRASH
+          value: "false"
+        - name: CRASH_AFTER_TIME_MS
+          value: "5000"
+        - name : PORT
+          value: 8080
+        - name: CPU_LOAD_PERCENT  
+          value: 50
+        - name: MEMORY_MB  
+          value: 1024
+        - name: DURATION_SEC
+          value: 0
+        - name: SHUTDOWN
+          value: "false"
+        - name: SHUTDOWN_AFTER_TIME_MS
+          value: 10000     
         
 
 ---
@@ -31,6 +43,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: loadsim-service
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"  
 spec:
   selector:
     app: loadsim

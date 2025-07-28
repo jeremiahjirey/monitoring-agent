@@ -87,12 +87,12 @@ jobs:
        - name: Delete Old Secrett
          run: kubectl delete secret pod-secret
 
-       - name: Create Secret
-         run: |
-            kubectl create secret generic pod-secret \
-            --from-literal=ENVIRONMENT=${{ secrets.ENVIRONMENT }} \
-            --from-literal=CRASH=${{ secrets.CRASH}} \
-            --from-literal=CRASH_AFTER_TIME_MS=${{ secrets.CRASH_AFTER_TIME_MS }} \
+       #- name: Create Secret
+       #  run: |
+       #     kubectl create secret generic pod-secret \
+       #     --from-literal=ENVIRONMENT=${{ secrets.ENVIRONMENT }} \
+       #     --from-literal=CRASH=${{ secrets.CRASH}} \
+       #     --from-literal=CRASH_AFTER_TIME_MS=${{ secrets.CRASH_AFTER_TIME_MS }} \
            # --from-literal=SNS_TOPIC_ARN=${{ secrets.SNS_TOPIC_ARN }} \
            # --from-literal=API_GATEWAY_URL=${{ secrets.API_GATEWAY_URL }} \
            # --from-literal=ATHENA_SCHEMA_NAME=${{ secrets.ATHENA_SCHEMA_NAME }} \
