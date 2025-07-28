@@ -29,12 +29,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: techno-app-service
+  name: loadsim-service
   annotations:
     service.beta.kubernetes.io/aws-load-balancer-type: "nlb"  # Penting!
 spec:
   selector:
-    app: techno-app
+    app: loadsim
   ports:
     - protocol: TCP
       port: 80
