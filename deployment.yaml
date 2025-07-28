@@ -20,21 +20,21 @@ spec:
         env:
         - name: ENVIRONMENT
           valueFrom:
-          secretKeyRef:
-                  name: pod-secret
-                  key: ENVIRONMENT
+            secretKeyRef:
+                name: pod-secret
+                key: ENVIRONMENT
 
         - name: CRASH
           valueFrom:
-          secretKeyRef:
-                  name: pod-secret
-                  key: CRASH
+            secretKeyRef:
+                name: pod-secret
+                key: CRASH
 
         - name: CRASH_AFTER_TIME_MS
           valueFrom:
-          secretKeyRef:
-                  name: pod-secret
-                  key: CRASH_AFTER_TIME_MS
+            secretKeyRef:
+                name: pod-secret
+                key: CRASH_AFTER_TIME_MS
 
 ---
 apiVersion: v1
